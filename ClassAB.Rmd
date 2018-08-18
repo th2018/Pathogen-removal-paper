@@ -1,0 +1,61 @@
+---
+title: "ClassA"
+author: "Tao Huang"
+date: "8/9/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("/Users/taohuang/Desktop/taohuang backup/Desktop/Method_R")
+ClassB<-read.table("ClassA04032018.csv",header=T,sep=',')
+new.data<-ClassB[,2:3]
+rownames(new.data)=ClassB[,1]
+new.data<-as.matrix(new.data)
+#barplot(t(new.data), beside=T, legend=,colnames(new.data))
+#png('ClassA.png')
+par(mar=c(4,4.1,4,0))
+barplot(t(new.data), beside=T,col=c("black","grey"), ylim=c(0,100),ylab=("Exceedance probability (%)"),cex=0.96,cex.lab=1.21,cex.axis=1.21)
+#legend("topright",legend=colnames(new.data),cex=0.9,pch=c(15,15), col=c("blACK", "GREY"))
+mtext("(a)",3
+      ,adj=0
+      ,line=0.5
+      ,cex=1.2
+     # ,at=0
+     )
+
+legend("topright",
+       legend=c("Mixing", "RWC+RHZ"),
+       cex=1.01,pch=c(15,15), col=c("black", "GREY"))
+m<-mean(ClassB$Mixing)
+  m2<-mean(ClassB$RWC.RHZ)
+  m
+  m2
+#dev.off()
+```
+
+```{r}
+setwd("/Users/taohuang/Desktop/taohuang backup/Desktop/Method_R")
+ClassB<-read.table("ClassB04032018.csv",header=T,sep=',')
+new.data<-ClassB[,2:3]
+rownames(new.data)=ClassB[,1]
+new.data<-as.matrix(new.data)
+#barplot(t(new.data), beside=T, legend=,colnames(new.data))
+#png('ClassA.png')
+par(mar=c(4,4.1,4,0))
+barplot(t(new.data), beside=T,col=c("black","grey"), ylim=c(0,100),ylab=("Exceedance probability (%)"),cex=0.96,cex.lab=1.21,cex.axis=1.21)
+mtext("(b)",3
+      ,adj=0
+      ,line=0.5
+      ,cex=1.2
+     # ,at=0
+     )
+m<-mean(ClassB$Mixing)
+  m2<-mean(ClassB$RWC.RHZ)
+  m
+  m2
+```
+
